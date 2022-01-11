@@ -7,11 +7,14 @@
 
 <link rel="stylesheet" href="css/styles.css">
 
+<p id="title"></p>
 <p id="demo"></p>
 
 <script>
+    var targetDate = "January 19, 2022 2:00 pm"
+    document.getElementById("title").innerHTML = "Countdown to...<br/>" + targetDate;
     // Set the date we're counting down to
-    var countDownDate = new Date("Jan 19, 2022 13:34:25").getTime();
+    var countDownDate = new Date(targetDate).getTime();
     
     var dayDiv = document.createElement("div");
     dayDiv.id = "days"
@@ -45,9 +48,16 @@
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        document.getElementById("days").innerHTML = days + " Days";
-        document.getElementById("hours").innerHTML = hours + " Hours";
-        document.getElementById("minutes").innerHTML = minutes + " Minutes";
+        if (document.getElementById("days").innerHTML != days + " Days") {
+            document.getElementById("days").innerHTML = days + " Days";
+        }
+        if (document.getElementById("hours").innerHTML != hours + " Hours") {
+            document.getElementById("hours").innerHTML = hours + " Hours";
+        }
+        if (document.getElementById("minutes").innerHTML != minutes + " Minutes") {
+            document.getElementById("minutes").innerHTML = minutes + " Minutes";
+        }
+
         document.getElementById("seconds").innerHTML = seconds + " Seconds";
         
         // If the count down is finished, write some text

@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    background-color: lightpink;
+}
+
+#title {
+    text-align: center;
+    color: green;
+    margin: 0px;
+    padding: 12px;
+    font-size: 56px;
+    font-family: Georgia, Arial, serif;
+
+    background-color: lightblue;
+}
+
+#demo {
+    text-align: center;
+    font-size: 36px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+
+    width: max-content;
+    padding: 12px;
+
+    margin: 0 auto;
+
+    background-color: lightsalmon;
+}
