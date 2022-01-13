@@ -10,41 +10,58 @@
 <p id="title"></p>
 <p id="demo"></p>
 
-<div id = "dateInput">
-    <select id="month" name="month">
-        <option value="jan">January</option>
-        <option value="feb">February</option>
-        <option value="mar">March</option>
-        <option value="apr">April</option>
-        <option value="may">May</option>
-        <option value="jun">June</option>
-        <option value="jul">July</option>
-        <option value="aug">August</option>
-        <option value="sep">September</option>
-        <option value="oct">October</option>
-        <option value="nov">November</option>
-        <option value="dec">December</option>
-    </select>
+<div class = "footer">
+    <div id = "dateInput">
+        <select id="month" name="month">
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+        </select>
 
-    <input type="text" id="day" name="day" placeholder="Day of the month...">
+        <input type="text" id="day" name="day" placeholder="Day of the month...">
 
-    <input type="text" id="year" name="year" placeholder="Year...">
+        <input type="text" id="year" name="year" placeholder="Year...">
+        
+        <article>
+            <section>
+                <input type="text" id="hrs" name="hours" placeholder="Hours...">
+            </section>
+            
+            <section>
+                <input type="text" id="min" name="minutes" placeholder="Minutes...">
+            </section>
 
-    <select id="half" name="half">
-        <option value="am">AM</option>
-        <option value="pm">PM</option>
-    </select>
+            <section>
+                <input type="text" id="sec" name="seconds" placeholder="Seconds...">
+            </section>
+        </article>
 
-    <input type="submit" value="Submit">
-</div>  
+        <select id="half" name="half">
+            <option value="am">AM</option>
+            <option value="pm">PM</option>
+        </select>
 
+        <button onclick="updateDate()">Submit</button>
+    </div>  
+</div>
 
 <script>
-    var targetDate = "January 19, 2022 2:00 pm"
-    document.getElementById("title").innerHTML = "Countdown to...<br/>" + targetDate;
-    // Set the date we're counting down to
-    var countDownDate = new Date(targetDate).getTime();
-    
+    var month = "January";
+    var day = "1";
+    var year = "2022";
+    var time = "2:00";
+    var ampm = "pm";
+    window.targetDate = month + " " + day + ", " + year + " " + time + " " + ampm;
+
     var dayDiv = document.createElement("div");
     dayDiv.id = "days"
     document.getElementById("demo").appendChild(dayDiv)
@@ -60,10 +77,13 @@
     var secondDiv = document.createElement("div");
     secondDiv.id = "seconds"
     document.getElementById("demo").appendChild(secondDiv)
-    
+
     // Update the count down every 1 second
     var x = setInterval(function() {
-    
+        document.getElementById("title").innerHTML = "Countdown to...<br/>" + window.targetDate;
+        // Set the date we're counting down to
+        var countDownDate = new Date(targetDate).getTime();
+
         // Get today's date and time
         var now = new Date().getTime();
     
@@ -95,4 +115,15 @@
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
+
+    function updateDate() {
+        var dateInput = document.getElementById("dateInput");
+        var children = dateInput.children;
+        var month = children[0].value;
+        var day = children[1].value;
+        var year = children[2].value;
+        var time = children[3].value;
+        var ampm = children[4].value;
+        window.targetDate = month + " " + day + ", " + year + " " + time + " " + ampm;
+    }
 </script>
