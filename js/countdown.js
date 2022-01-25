@@ -1,14 +1,6 @@
-targetDateList = [month, day, year, hour, min, sec, ampm]
-targetDate = targetDateList[0] + " " + targetDateList[1] + ", " + targetDateList[2] + " " + targetDateList[3] + ":" + targetDateList[4] + ":" + targetDateList[5] + " " + targetDateList[6];
+var Target = new TargetDate();
+
 function setup() {
-    var month = "February";
-    var day = "1";
-    var year = "2022";
-    var hour = "2";
-    var min = "00";
-    var sec = "00";
-    var ampm = "pm";
-    
     var dayDiv = document.createElement("div");
     dayDiv.id = "days"
     document.getElementById("demo").appendChild(dayDiv)
@@ -27,9 +19,9 @@ function setup() {
 
     // Update the count down every 1 second
     var x = setInterval(function() {
-        document.getElementById("title").innerHTML = "Countdown to...<br/>" + global.targetDate;
+        document.getElementById("title").innerHTML = "Countdown to...<br/>" + Target.str;
         // Set the date we're counting down to
-        var countDownDate = new Date(global.targetDate).getTime();
+        var countDownDate = new Date(Target.str).getTime();
 
         // Get today's date and time
         var now = new Date().getTime();
@@ -58,7 +50,6 @@ function setup() {
         
         // If the count down is finished, write some text
         if (distance < 0) {
-            clearInterval(x);
             document.getElementById("demo").innerHTML = "EXPIRED";
         }
     }, 1000);
