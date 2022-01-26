@@ -13,54 +13,17 @@
 
 <body>
     <p id="title"></p>
-    <p id="demo"></p>
-
-    <div class = "footer">
-        <div id = "dateInput">
-            <select id="month">
-                <option value="January">January</option>
-                <option value="February">February</option>
-                <option value="March">March</option>
-                <option value="April">April</option>
-                <option value="May">May</option>
-                <option value="June">June</option>
-                <option value="July">July</option>
-                <option value="August">August</option>
-                <option value="September">September</option>
-                <option value="October">October</option>
-                <option value="November">November</option>
-                <option value="December">December</option>
-            </select>
-
-            <input type="text" id="day" name="day" placeholder="Day of the month...">
-
-            <input type="text" id="year" name="year" placeholder="Year...">
-            
-            <article>
-                <section>
-                    <input type="text" id="hrs" name="hours" placeholder="Hours...">
-                </section>
-                
-                <section>
-                    <input type="text" id="min" name="minutes" placeholder="Minutes...">
-                </section>
-
-                <section>
-                    <input type="text" id="sec" name="seconds" placeholder="Seconds...">
-                </section>
-            </article>
-
-            <select id="half" name="half">
-                <option value="am">AM</option>
-                <option value="pm">PM</option>
-            </select>
-
-            <button onclick="updateDate()">Submit</button>
-        </div>  
+    <div id="center">
+        <p id="demo"></p>
     </div>
 
+    <div class = "footer">
+        <div id = "dateInput"></div>  
+    </div>
+
+    <script src="js/inputs.js"></script>
     <script src="js/TargetDate.js"></script>
     <script src="js/countdown.js"></script>
     <script src="js/form.js"></script>
-    <script src="js/inputs.js"></script>
+    
 </body>

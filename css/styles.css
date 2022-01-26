@@ -1,6 +1,7 @@
-body {
+html, body {
     margin: 0;
     background-color: lightpink;
+    height: 100%;
 }
 
 #title {
@@ -14,6 +15,10 @@ body {
     background-color: lightblue;
 }
 
+#center {
+    height: 100%;
+}
+
 #demo {
     text-align: center;
     font-size: 36px;
@@ -23,6 +28,8 @@ body {
     padding: 12px;
 
     top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 
     margin: 0 auto;
 
@@ -48,12 +55,12 @@ body {
     width: 50%;
 }
 
-article {                        /* 2 */
-    flex: 1;                       /* 2 */
-    display: grid;                 /* 3 */
-    grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));  /* 4 */
-    grid-auto-rows: max-content;         /* 5 */
-    grid-gap: 10px;                /* 6 */
+article {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+    grid-auto-rows: max-content;
+    grid-gap: 10px;
 }
 map {
     width: 250px;

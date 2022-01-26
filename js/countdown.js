@@ -1,6 +1,6 @@
 var Target = new TargetDate();
 
-function setup() {
+function createDivs() {
     var dayDiv = document.createElement("div");
     dayDiv.id = "days"
     document.getElementById("demo").appendChild(dayDiv)
@@ -16,6 +16,11 @@ function setup() {
     var secondDiv = document.createElement("div");
     secondDiv.id = "seconds"
     document.getElementById("demo").appendChild(secondDiv)
+}
+
+function setup() {
+
+    createDivs();
 
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -49,9 +54,9 @@ function setup() {
         document.getElementById("seconds").innerHTML = seconds + " Seconds";
         
         // If the count down is finished, write some text
-        if (distance < 0) {
-            document.getElementById("demo").innerHTML = "EXPIRED";
-        }
+        //if (distance < 0) {
+        //    document.getElementById("demo").innerHTML = "EXPIRED";
+        //}
     }, 1000);
 }
 

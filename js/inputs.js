@@ -7,5 +7,5 @@ function updateDate() {
                     children[3].children[0].children[0].value,
                     children[3].children[1].children[0].value,
                     children[3].children[2].children[0].value,
-                    children[4].value)
+                    children[3].children[3].children[0].value)
 }
