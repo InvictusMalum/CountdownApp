@@ -41,23 +41,37 @@ function setup() {
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        if (document.getElementById("days").innerHTML != days + " Days") {
-            document.getElementById("days").innerHTML = days + " Days";
+        var dayString = twoDigit(days) + " Days";
+        var hourString = twoDigit(hours) + " Hours";
+        var minuteString = twoDigit(minutes) + " Minutes";
+        var secondString = twoDigit(seconds) + " Seconds";
+
+        if (document.getElementById("days").innerHTML != dayString) {
+            document.getElementById("days").innerHTML = dayString;
         }
-        if (document.getElementById("hours").innerHTML != hours + " Hours") {
-            document.getElementById("hours").innerHTML = hours + " Hours";
+        if (document.getElementById("hours").innerHTML != hourString) {
+            document.getElementById("hours").innerHTML = hourString;
         }
-        if (document.getElementById("minutes").innerHTML != minutes + " Minutes") {
-            document.getElementById("minutes").innerHTML = minutes + " Minutes";
+        if (document.getElementById("minutes").innerHTML != minuteString) {
+            document.getElementById("minutes").innerHTML = minuteString;
         }
 
-        document.getElementById("seconds").innerHTML = seconds + " Seconds";
+        document.getElementById("seconds").innerHTML = secondString;
         
         // If the count down is finished, write some text
         //if (distance < 0) {
         //    document.getElementById("demo").innerHTML = "EXPIRED";
         //}
     }, 1000);
+}
+
+function twoDigit(x) {
+    var str = x.toString();
+    if (str.length == 1) {
+        return str + " ";
+    } else {
+        return str;
+    }
 }
 
 setup()
