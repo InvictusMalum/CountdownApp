@@ -1,46 +1,61 @@
+const date = 0;
+const time = 1;
+const submit = 2;
+
 const month = 0;
 const day = 1;
 const year = 2;
-const time = 3;
-const submit = 4;
 
 const hour = 0;
 const minute = 1;
 const second = 2;
 const ampm = 3;
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function populateDays() {
+    var dateInput = document.getElementById("dateInput");
+    dateInput.children[date].children[day].innerHTML = '';
+    
+    dayNums = monthLengths[months.indexOf(dateInput.children[date].children[month].value)];
+    for (let i = 1; i <= dayNums; i++) {
+        var option = document.createElement("option");
+        option.innerHTML = i.toString();
+        option.value = i.toString();
+        dateInput.children[date].children[day].appendChild(option);
+    }
+}
+
 class Form {
     constructor() {
-        this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        this.monthLengths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-        
         this.divs = [];
 
         this.dateInput = document.getElementById("dateInput");
     }
 
     createDivs() {
+        var dateDiv = document.createElement("article");
+
         var monthDiv = document.createElement("select");
-        this.divs.push(monthDiv);
-
-        var dayDiv = document.createElement("input");
-        this.divs.push(dayDiv);
-
+        var dayDiv = document.createElement("select");
         var yearDiv = document.createElement("input");
-        this.divs.push(yearDiv);
+        dateDiv.appendChild(monthDiv);
+        dateDiv.appendChild(dayDiv);
+        dateDiv.appendChild(yearDiv);
+        this.divs.push(dateDiv);
+
 
         var timeDiv = document.createElement("article");
-        
+
         var hourDiv = document.createElement("select");
         var minuteDiv = document.createElement("select");
         var secondDiv = document.createElement("select");
         var ampmDiv = document.createElement("select");
-
         timeDiv.appendChild(hourDiv);
         timeDiv.appendChild(minuteDiv);
         timeDiv.appendChild(secondDiv);
         timeDiv.appendChild(ampmDiv);
-
         this.divs.push(timeDiv);
 
         var submitButton = document.createElement("button");
@@ -48,18 +63,16 @@ class Form {
     }
         
     populateConstantDivs() {
-        for (let i = 0; i < this.months.length; i++) {
+        for (let i = 0; i < months.length; i++) {
             var option = document.createElement("option")
-            option.innerHTML = this.months[i];
-            option.value = this.months[i];
-            this.divs[month].appendChild(option);
+            option.innerHTML = months[i];
+            option.value = months[i];
+            this.divs[date].children[month].appendChild(option);
         }
+        this.divs[date].children[month].addEventListener('input', populateDays);
         
-        this.divs[day].type = "text";
-        this.divs[day].placeholder = "Day of the month...";
-    
-        this.divs[year].type = "text";
-        this.divs[year].placeholder = "Year..."
+        this.divs[date].children[year].type = "text";
+        this.divs[date].children[year].placeholder = "Year..."
     
         for (let i = 1; i <= 12; i++) {
             var option = document.createElement("option")
@@ -120,3 +133,4 @@ var form = new Form();
 form.createDivs();
 form.populateConstantDivs();
 form.applyDivsToDateInput();
+populateDays();
